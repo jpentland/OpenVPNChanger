@@ -44,7 +44,7 @@ chmod +x index.py openvpn_setup
 ```
 Add openvpn_setup to visudo so it can be run without a sudo password:
 ```
-sudo visduo
+sudo visudo
 ```
 adding the lines at the end of the file
 ```
