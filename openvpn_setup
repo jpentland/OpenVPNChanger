@@ -1,0 +1,8 @@
+#!/bin/bash
+
+filename=$(basename "$1")
+servername="${filename%.*}"
+
+systemctl stop openvpn.service
+
+systemctl start openvpn@$servername.service
