@@ -1,14 +1,20 @@
-# Install Apache2
+# About
+Simple web interface using python cgi for switching between VPN Configurations
+
+# Installation
+
+## Install Apache2
 ```
 sudo apt-get install apache2
 ```
 
-# Enable CGI
+## Enable CGI
 Enable CGI mode
 ```
 sudo a2enmod cgi
 ```
-*Note: This may result in the message "Your MPM seems to be threaded. Selecting cgid instead of cgi.", this is ok*
+
+*Note: This may result in the message "Your MPM seems to be threaded. Selecting cgid instead of cgi."*
 
 Edit default configuration file
 ```
@@ -28,7 +34,7 @@ Restart apache2 service
 sudo service apache2 restart`
 ```
 
-# Install yattag
+## Install yattag
 
 Yattag is a python library for generating HTML or XML in a "pythonic way".
 
@@ -37,7 +43,7 @@ sudo apt-get install python-pip
 sudo pip install yattag
 ```
 
-# Enable OpenVPN Server
+## Enable OpenVPN Server
 copy `index.py` and `openvpn_setup` to `/var/www/cgi` and make them executable
 ```
 chmod +x index.py openvpn_setup
@@ -48,7 +54,7 @@ sudo visudo
 ```
 adding the lines at the end of the file
 ```
-#no pass for openvpn_setup
+##no pass for openvpn_setup
 ALL ALL = NOPASSWD: /var/www/cgi/openvpn_setup
 ```
 Optional: Modify the `openvpn_setup` script to suit your openvpn setup.
