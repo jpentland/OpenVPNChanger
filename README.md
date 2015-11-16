@@ -8,6 +8,8 @@ Enable CGI mode
 ```
 sudo a2enmod cgi
 ```
+*Note: This may result in the message "Your MPM seems to be threaded. Selecting cgid instead of cgi.", this is ok*
+
 Edit default configuration file
 ```
 sudo nano /etc/apache2/sites-enabled/000-default.conf
