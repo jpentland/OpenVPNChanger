@@ -28,16 +28,13 @@ Restart apache2 service
 sudo service apache2 restart`
 ```
 
-# Add dependecies
-`index.py` depends on:
-* `yattag`
-* `cgi`
-* `os`
-* `subprocess`
+# Install yattag
 
-Install them using `pip` or any other tool
+Yattag is a python library for generating HTML or XML in a "pythonic way".
+
 ```
-sudo pip yattag
+sudo apt-get install python-pip
+sudo pip install yattag
 ```
 
 # Enable OpenVPN Server
