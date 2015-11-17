@@ -8,7 +8,7 @@ import subprocess
 
 query = cgi.parse()
 
-OPENVPN_PATH = "/etc/openvpn/"
+OPENVPN_PATH = "/etc/nordvpn/"
 OPENVPN_SETUP_SCRIPT = os.getcwd() + "/openvpn_setup"
 
 def set_server(server):
@@ -50,9 +50,9 @@ with tag('html'):
                 lst = os.listdir(OPENVPN_PATH)
                 lst.sort()
                 for file in lst:
-                    if file.endswith(".conf"):
+                    if file.endswith(".ovpn"):
                         with doc.option(value = file):
-                            text(file.split(".conf")[0])
+								text(file[:-len(".ovpn")])
             doc.stag('input', type = "submit", value = "Set")
 
         if query.has_key('server'):

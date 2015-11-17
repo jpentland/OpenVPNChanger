@@ -1,8 +1,21 @@
 #!/bin/bash
+sourcedir="/etc/nordvpn"
+targetdir="/etc/openvpn"
+loginfile="/root/vpn-login.conf"
 
-filename=$(basename "$1")
+if [ "$1 " == " " ]; then
+		echo "Please specify filename"
+		exit 1
+fi
+
+filename=$(basename $1)
 servername="${filename%.*}"
+targetfile="$targetdir/$servername.conf"
+loginfile_sed=$(echo $loginfile | sed -e 's/[\/&]/\\&/g')
 
-systemctl stop openvpn.service
+rm $targetdir/*.conf
+cp $sourcedir/$filename $targetfile
+sed -i "s/auth-user-pass/auth-user-pass $loginfile_sed/g" $targetfile
 
-systemctl start openvpn@$servername.service
+service openvpn restart 
+
