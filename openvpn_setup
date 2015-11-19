@@ -1,5 +1,5 @@
 #!/bin/bash
-sourcedir="/etc/nordvpn"
+sourcedir="/etc/openvpn-configs"
 targetdir="/etc/openvpn"
 loginfile="/root/vpn-login.conf"
 
