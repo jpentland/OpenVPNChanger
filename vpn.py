@@ -72,7 +72,6 @@ def setVpn(data):
 
 	ovpn_file = os.path.join(OVPN_FILES_PATH, vpn + OVPN_FILE_EXT)
 	command = "sudo %s %s" % (OVPN_SETUP, ovpn_file)
-	print "command:", command
 
 	try:
 		process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
