@@ -15,7 +15,7 @@ import sys
 import subprocess
 import json
 
-OVPN_FILES_PATH = "/etc/nordvpn/"
+OVPN_FILES_PATH = "/etc/openvpn-configs"
 OPENVPN_PATH = "/etc/openvpn"
 OVPN_SETUP = "openvpn_setup"
 OVPN_FILE_EXT = ".ovpn"
