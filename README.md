@@ -16,24 +16,6 @@ sudo a2enmod cgi
 
 *Note: This may result in the message "Your MPM seems to be threaded. Selecting cgid instead of cgi."*
 
-Edit default configuration file
-```
-sudo nano /etc/apache2/sites-enabled/000-default.conf
-```
-Add before `ServerAdmin webmaster@localhost`:
-```
-        <Directory /var/www/cgi>
-            Options +ExecCGI
-            DirectoryIndex index.py
-        </Directory>
-        AddHandler cgi-script .py
-```
-and change `DocumentRoot` to `/var/www/cgi`
-Restart apache2 service
-```
-sudo service apache2 restart`
-```
-
 ## Install yattag
 
 Yattag is a python library for generating HTML or XML in a "pythonic way".
@@ -44,9 +26,14 @@ sudo pip install yattag
 ```
 
 ## Enable OpenVPN Server
-copy `index.py` and `openvpn_setup` to `/var/www/cgi` and make them executable
+
+Install files:
+
 ```
-chmod +x index.py openvpn_setup
+	sudo cp vpn.py /usr/lib/cgi-bin
+	sudo cp openvpn_setup /usr/local/bin
+	sudo cp -r www/* /var/www/
+
 ```
 Add openvpn_setup to visudo so it can be run without a sudo password:
 ```
@@ -55,7 +42,28 @@ sudo visudo
 adding the lines at the end of the file
 ```
 ##no pass for openvpn_setup
-ALL ALL = NOPASSWD: /var/www/cgi/openvpn_setup
+ALL ALL = NOPASSWD: openvpn_setup
 ```
-Optional: Modify the `openvpn_setup` script to suit your openvpn setup.
-Current script is called with a location of a OpenVPN configuration file as an argument.
+
+## Copy vpn configuration
+Create a directory called /etc/openvpn-configs
+```
+mkdir /etc/openvpn-configs
+```
+
+Copy all your ".ovpn" files to this directory:
+```
+cp /path/to/files/*.ovpn /etc/openvpn-configs
+```
+
+## Create credentials file
+*Note: This app currently assumes ovpn files use auth-user-pass*
+
+Create a new file /etc/openvpn/vpn-login continaning your VPN username and password:
+
+E.g:
+```
+someone@example.com
+hunter2
+```
+
