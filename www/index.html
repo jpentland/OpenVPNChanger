@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Bootstrap 101 Template</title>
+		<link href="include/slate/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="include/three-quarters.css" type="text/css">
+	</head>
+	<body role="document">
+		<div class="container">
+			<div class="jumbotron">
+				<h1>OpenVPN Switcher</h1>
+		        <p></p>
+			</div>
+			<div class="well bs-component">
+					<h3 id="currentVPN"></h3>
+					<div id="currentSpinner" class="three-quarters-loader"></div>
+			</div>
+			<div class="well bs-component">
+				<form class="form-horizontal">
+					<fieldset>
+						<legend>Select VPN</legend>
+						<div class="form-group">
+							<label for="select" class="col-lg-2 control-label">VPN Configs</label>
+							<div class="col-lg-10">
+								<select id="vpnSelect" multiple="" class="form-control">
+									<option>...</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-lg-10 col-lg-offset-2">
+								<button class="btn btn-primary" onclick="setVPN()" type="button">Submit</button>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		
+			<div class="well">
+				<h2>Command Output</h2>
+					<div id="outputSpinner" class="three-quarters-loader"></div>
+				<p id="coutput">...</p>
+			</div>
+		</div>
+
+		<!-- include jquery and bootstrap -->
+		<script src="include/jquery.min.js"></script>
+		<script src="include/bootstrap/js/bootstrap.min.js"></script>
+		<script src="include/vpnSwitcher.js"></script>
+	</body>
+</html>
